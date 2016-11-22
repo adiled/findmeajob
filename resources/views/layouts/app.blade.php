@@ -33,10 +33,14 @@
         <li><a href="{{ url('/login') }}">Login</a></li>
         <li><a href="{{ url('/register') }}">Register</a></li>
         @else
-        <li class="dashboard"><a href="{{ url('/dashboard') }}">Dashboard</a><a href="{{ url('/logout') }}">
-      <i class="power icon"></i>
-                  </a></li>
-        <li class="logout">
+        <li class="dashboard">
+            @if (Request::is('dashboard/profile') || Request::is('dashboard/profile/*'))
+            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            @else
+            <a href="{{ url('dashboard/profile') }}">My Account</a>
+            @endif<a href="{{ url('/logout') }}">
+                <i class="power icon"></i>
+            </a>
         </li>
         @endif
         </ul>

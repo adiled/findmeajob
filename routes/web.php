@@ -27,3 +27,8 @@ Route::get('/logout', function(){
 });
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/dashboard/profile', 'DashboardController@showProfile');
+
+Route::get('/dashboard/profile/edit', 'DashboardController@showProfileEdit');
+Route::put('/dashboard/profile', 'UserController@edit');

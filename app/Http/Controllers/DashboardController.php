@@ -22,10 +22,17 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         return view('dashboard',[
             'listings' => Listing::all()
         ]);
+    }
+
+    public function showProfile() {
+        return view('profile');
+    }
+
+    public function showProfileEdit() {
+        return view('editprofile');
     }
 }
