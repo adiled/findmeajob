@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch",
+    "build:css": "node-sass ./resources/assets/sass/app.scss -o ./public/css/",
+    "watch:css": "npm run build:css && node-sass ./resources/assets/sass/app.scss -wo ./public/css/ ",
+    "build:js": "browserify index.js -o web/src/bundle.js",
+    "watch:js": "npm run build:js && watchify index.js -o web/src/bundle.js -v",
+    "build": "npm run build:css & npm run build:js",
+    "watch": "npm run watch:css & npm run watch:js",
+    "serve": "browser-sync start --server './web' --files 'web, !web/src/scss/**/*.*, !web/src/js/**/*.*' "
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jquery": "^3.1.0",
+    "laravel-elixir": "^6.0.0-9",
+    "laravel-elixir-vue-2": "^0.2.0",
+    "laravel-elixir-webpack-official": "^1.0.2",
+    "lodash": "^4.16.2",
+    "browserify": "^13.1.0",
+    "node-sass": "^3.9.3",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "semantic-ui": "^2.2.6"
+  }
+}

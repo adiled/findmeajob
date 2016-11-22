@@ -1,0 +1,58 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat);
+body {
+  background-color: #fff;
+  font-family: "Montserrat" !important;
+  font-size: 16px; }
+
+a:hover {
+  cursor: pointer; }
+
+.center {
+  text-align: center; }
+
+.blue {
+  color: #03A9F4; }
+
+.small {
+  font-size: 11px; }
+
+header {
+  height: 60px;
+  background-color: #fafafa; }
+  header .logo {
+    float: left; }
+  header nav {
+    float: right;
+    line-height: 60px;
+    font-size: 14px; }
+    header nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      header nav ul li {
+        float: left; }
+      header nav ul li a {
+        display: inline-block;
+        padding: 0 20px; }
+      header nav ul li.dashboard a {
+        background-color: #03A9F4;
+        color: #fff; }
+      header nav ul li.logout a {
+        background-color: #607D8B;
+        color: #fff; }
+
+section {
+  padding: 50px 5%; }
+
+.listing {
+  margin: 50px 0; }
+  .listing .item {
+    padding: 10px 20px;
+    margin: 30px 0;
+    text-align: center;
+    background-color: #03A9F4;
+    color: #fff;
+    transition: all 0.2s ease; }
+    .listing .item:hover {
+      cursor: pointer;
+      box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1); }
