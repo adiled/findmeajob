@@ -2,12 +2,13 @@
 
 @section('content')
 
-<section>
-  <p>Hello {{Auth::user()->full_name}}!</p>
+<?php $role = Auth::user()->userRole->name; ?>
 
-  <p>{{Request::is('dashboard') ? 'Yes' : 'No'}}</p>
+<section class="dashboard {{$role}}">
 
-  <h3 class="heading center">Today's Listings</h3>
+  <h3 class="heading center upper">
+    {{ $role==="employer" ? 'My' : 'Today\'s' }} Listings
+  </h3>
 
   @include('components.listings')
 

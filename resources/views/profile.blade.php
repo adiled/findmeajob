@@ -2,13 +2,20 @@
 
 @section('content')
 
-<section>
+<section class="user-profile">
 
-  <h5 class="heading center upper">My Account | <a href="profile/edit">Edit</a></h5>
-  <h2 class="blue">{{Auth::user()->full_name}}</h2><br>
-  <p><b class="blue">Account Type:</b> {{Auth::user()->userRole->display_name}}</p>
-  <p><b class="blue">Email Address:</b> {{Auth::user()->email}}</p>
+  <h5 class="heading center upper">My Profile</h5>
+  
+  <div class="header">
+    <h1 class="name blue">{{Auth::user()->full_name}}
+    <a href="profile/edit"><i class="large edit icon"></i></a></h1>
+    <p class="type">{{Auth::user()->userRole->display_name}}</p>
+  </div>
 
+  <div class="details">
+    <p><span class="blue">Email Address</span>&emsp;{{Auth::user()->email}}</p>
+    <p><span class="blue">Reward Points</span>&emsp;{{Auth::user()->reward_points}}</p>
+  </div>
   
 
 </section>

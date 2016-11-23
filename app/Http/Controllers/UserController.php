@@ -1,6 +1,8 @@
 <?php 
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Models\User as User;
 
 class UserController extends Controller {
 
@@ -53,7 +55,7 @@ class UserController extends Controller {
    */
   public function edit($id)
   {
-    return $id;
+    
   }
 
   /**
@@ -62,9 +64,21 @@ class UserController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update($id, Request $request)
   {
     
+    // Input::get("name")
+
+    $this->validate($request, [
+      'full_name' => 'required',
+      'email' => 'unique:users,email,'.$id.'|email|required'
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->update($request->all());
+
+    return redirect()->back()->with('success', 'Profile Updated');
+
   }
 
   /**

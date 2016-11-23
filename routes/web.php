@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome', [
-        'listings' => App\Models\Listing::all()
+        'listings' => App\Models\Listing::orderBy('last_activated_at', 'DESC')->get()
       ]);
 });
 
@@ -31,4 +31,9 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/profile', 'DashboardController@showProfile');
 
 Route::get('/dashboard/profile/edit', 'DashboardController@showProfileEdit');
-Route::put('/dashboard/profile', 'UserController@edit');
+
+
+Route::put('/user/{id}', [
+  'as' => 'user.update',
+  'uses' => 'UserController@update'
+  ]);

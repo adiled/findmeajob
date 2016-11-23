@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat);
 
 $brand-primary: #03A9F4;
-$brand-gray: #607D8B;
+$brand-gray: #F5F5F5;
 
 // Variables
 // @import "variables";
@@ -13,31 +13,89 @@ $brand-gray: #607D8B;
 
 body {background-color: #fff; font-family: 'Montserrat'!important; font-size: 16px}
 
+.clr {clear: both}
+
 a:hover {cursor: pointer}
 .center {text-align: center;}
 .blue {color: $brand-primary}
 .small {font-size: 11px}
+.upper {text-transform: uppercase;
+  &.heading {letter-spacing: 1px; font-family: 'Montserrat'}
+}
 
 header {height: 60px; background-color: #fafafa;
   
   .logo {float: left}
   
-  nav {float: right; line-height: 60px; font-size: 14px;
+  nav {float: right; line-height: 60px; font-size: 0px;
     ul {list-style: none; margin: 0; padding: 0;
 
       li {float: left}
 
-      li a {display: inline-block; padding: 0 20px}
-      li.dashboard a {background-color: $brand-primary; color: #fff;}
-      li.logout a {background-color: $brand-gray; color: #fff;}
+      li a {display: inline-block; padding: 0 20px; font-size: 14px;}
+      li.dashboard a {background-color: $brand-primary; color: #fff;
+        &.logout {background-color: darken($brand-primary, 2%);}
+      }
     }
   }
 }
 
 section {padding: 50px 5%;}
 
-.listing { margin: 50px 0;
-  .item {padding: 10px 20px; margin: 30px 0; text-align: center; background-color: $brand-primary; color: #fff; transition: all 0.2s ease;
-    &:hover {cursor: pointer; box-shadow: 0 5px 2px rgba(0,0,0,0.1)}
+#app .listing { margin: 50px 0;
+  .item {position: relative; padding: 10px 20px!important; text-align: center; background-color: darken($brand-gray, 40%); color: #fff; transition: all 0.3s ease-in-out;
+    
+    $toolbar-height: 35px; 
+
+    &.has-toolbar {padding-top: $toolbar-height+10!important;}
+    &.disabled {opacity: 0.3} 
+
+    a {color: #fff}
+
+    &:hover:not(.disabled) {cursor: pointer; box-shadow: 0 5px 3px rgba(0,0,0,0.2)!important; transform: translateY(-1px)}
+
+    .toolbar { position: absolute; height: $toolbar-height; right:0; top: 0; left:0; padding: 0 10px; line-height: $toolbar-height; background-color: darken($brand-gray, 30%); font-size: 14px;
+      span {float: left}
+      a {float: right;}
+    }
+
+    .employer {font-size: 14px}
   }
+}
+
+section.edit-profile {
+  max-width: 600px; margin: 0 auto;
+  a.view-profile {display: block; padding: 0 0 20px 0; font-size: 13px}
+}
+
+section.user-profile { max-width: 600px; margin: 0 auto;
+  .header {margin: 50px 0; padding: 20px 0; width: 100%; border-bottom: 3px solid; border-color: $brand-primary;
+
+    .name {margin: 0}
+    .type {color: #bbb; font-size: 14px}
+    a {float: right; font-size: 14px}
+  }
+  .details { padding: 0 10px;}
+}
+
+// UI Overrides
+
+#app {
+  
+  .heading {margin: 0 0 50px 0}
+  .ui.button.primary {background-color: $brand-primary}
+
+  .ui.message {border: 0; box-shadow: none; padding: 7px 20px; margin: 50px 0;
+    &.positive {background-color: #00BFA5; color: #fff}
+  }
+
+  form.ui.form {
+    label {color: #666;}
+    input:not([type="submit"]), textarea { margin: 20px 0 40px 0; border-radius: 0; border: 0; border-bottom: 2px solid #aaa; color: #aaa;
+
+      &:focus {color: $brand-primary; border-color: $brand-primary; }
+    }
+  }
+
+
 }

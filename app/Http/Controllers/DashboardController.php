@@ -24,7 +24,7 @@ class DashboardController extends Controller
      */
     public function index() {
         return view('dashboard',[
-            'listings' => Listing::all()
+            'listings' => Listing::orderBy('last_activated_at', 'DESC')->get()
         ]);
     }
 

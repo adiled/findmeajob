@@ -4,6 +4,9 @@ body {
   font-family: "Montserrat" !important;
   font-size: 16px; }
 
+.clr {
+  clear: both; }
+
 a:hover {
   cursor: pointer; }
 
@@ -16,6 +19,12 @@ a:hover {
 .small {
   font-size: 11px; }
 
+.upper {
+  text-transform: uppercase; }
+  .upper.heading {
+    letter-spacing: 1px;
+    font-family: 'Montserrat'; }
+
 header {
   height: 60px;
   background-color: #fafafa; }
@@ -24,7 +33,7 @@ header {
   header nav {
     float: right;
     line-height: 60px;
-    font-size: 14px; }
+    font-size: 0px; }
     header nav ul {
       list-style: none;
       margin: 0;
@@ -33,26 +42,105 @@ header {
         float: left; }
       header nav ul li a {
         display: inline-block;
-        padding: 0 20px; }
+        padding: 0 20px;
+        font-size: 14px; }
       header nav ul li.dashboard a {
         background-color: #03A9F4;
         color: #fff; }
-      header nav ul li.logout a {
-        background-color: #607D8B;
-        color: #fff; }
+        header nav ul li.dashboard a.logout {
+          background-color: #03a2ea; }
 
 section {
   padding: 50px 5%; }
 
-.listing {
+#app .listing {
   margin: 50px 0; }
-  .listing .item {
-    padding: 10px 20px;
-    margin: 30px 0;
+  #app .listing .item {
+    position: relative;
+    padding: 10px 20px !important;
     text-align: center;
-    background-color: #03A9F4;
+    background-color: #8f8f8f;
     color: #fff;
-    transition: all 0.2s ease; }
-    .listing .item:hover {
+    transition: all 0.3s ease-in-out; }
+    #app .listing .item.has-toolbar {
+      padding-top: 45px !important; }
+    #app .listing .item.disabled {
+      opacity: 0.3; }
+    #app .listing .item a {
+      color: #fff; }
+    #app .listing .item:hover:not(.disabled) {
       cursor: pointer;
-      box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1); }
+      box-shadow: 0 5px 3px rgba(0, 0, 0, 0.2) !important;
+      transform: translateY(-1px); }
+    #app .listing .item .toolbar {
+      position: absolute;
+      height: 35px;
+      right: 0;
+      top: 0;
+      left: 0;
+      padding: 0 10px;
+      line-height: 35px;
+      background-color: darkgray;
+      font-size: 14px; }
+      #app .listing .item .toolbar span {
+        float: left; }
+      #app .listing .item .toolbar a {
+        float: right; }
+    #app .listing .item .employer {
+      font-size: 14px; }
+
+section.edit-profile {
+  max-width: 600px;
+  margin: 0 auto; }
+  section.edit-profile a.view-profile {
+    display: block;
+    padding: 0 0 20px 0;
+    font-size: 13px; }
+
+section.user-profile {
+  max-width: 600px;
+  margin: 0 auto; }
+  section.user-profile .header {
+    margin: 50px 0;
+    padding: 20px 0;
+    width: 100%;
+    border-bottom: 3px solid;
+    border-color: #03A9F4; }
+    section.user-profile .header .name {
+      margin: 0; }
+    section.user-profile .header .type {
+      color: #bbb;
+      font-size: 14px; }
+    section.user-profile .header a {
+      float: right;
+      font-size: 14px; }
+  section.user-profile .details {
+    padding: 0 10px; }
+
+#app .heading {
+  margin: 0 0 50px 0; }
+
+#app .ui.button.primary {
+  background-color: #03A9F4; }
+
+#app .ui.message {
+  border: 0;
+  box-shadow: none;
+  padding: 7px 20px;
+  margin: 50px 0; }
+  #app .ui.message.positive {
+    background-color: #00BFA5;
+    color: #fff; }
+
+#app form.ui.form label {
+  color: #666; }
+
+#app form.ui.form input:not([type="submit"]), #app form.ui.form textarea {
+  margin: 20px 0 40px 0;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid #aaa;
+  color: #aaa; }
+  #app form.ui.form input:not([type="submit"]):focus, #app form.ui.form textarea:focus {
+    color: #03A9F4;
+    border-color: #03A9F4; }
