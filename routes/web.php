@@ -37,3 +37,5 @@ Route::put('/user/{id}', [
   'as' => 'user.update',
   'uses' => 'UserController@update'
   ]);
+
+Route::get('/listing/{id}', 'ListingController@show');

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600|Montserrat);
 body {
   background-color: #fff;
+  color: #555;
   font-family: "Montserrat" !important;
   font-size: 16px; }
 
@@ -24,6 +25,9 @@ a:hover {
   .upper.heading {
     letter-spacing: 1px;
     font-family: 'Montserrat'; }
+
+.title {
+  font-weight: bold; }
 
 header {
   height: 60px;
@@ -56,6 +60,7 @@ section {
 #app .listing {
   margin: 50px 0; }
   #app .listing .item {
+    display: block;
     position: relative;
     padding: 10px 20px !important;
     text-align: center;
@@ -117,11 +122,59 @@ section.user-profile {
   section.user-profile .details {
     padding: 0 10px; }
 
+section.login {
+  max-width: 600px;
+  margin: 0 auto; }
+
+section.single-listing {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 14px; }
+  section.single-listing .header {
+    margin: 50px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8; }
+    section.single-listing .header div.left {
+      float: left; }
+    section.single-listing .header div.right {
+      float: right; }
+      section.single-listing .header div.right a.apply {
+        display: block;
+        margin: 0 0 10px 0;
+        border-radius: 20px;
+        box-shadow: -3px 0 4px rgba(0, 0, 0, 0.2); }
+      section.single-listing .header div.right p {
+        text-align: right; }
+    section.single-listing .header .apply {
+      float: right; }
+
+#app .dimmer.blanket {
+  position: fixed;
+  overflow-y: scroll;
+  text-align: left; }
+  #app .dimmer.blanket section {
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease; }
+    #app .dimmer.blanket section:hover {
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.1); }
+    #app .dimmer.blanket section:before {
+      font-family: 'Icons';
+      content: '\f00d';
+      float: right;
+      color: rgba(0, 0, 0, 0.2); }
+
 #app .heading {
   margin: 0 0 50px 0; }
 
 #app .ui.button.primary {
-  background-color: #03A9F4; }
+  font-family: 'Montserrat';
+  background-color: #03A9F4;
+  transition: all 0.3s ease !important; }
+  #app .ui.button.primary:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+    transition: all 1s ease; }
 
 #app .ui.message {
   border: 0;
@@ -144,3 +197,7 @@ section.user-profile {
   #app form.ui.form input:not([type="submit"]):focus, #app form.ui.form textarea:focus {
     color: #03A9F4;
     border-color: #03A9F4; }
+
+#app form.ui.form input:-webkit-autofill {
+  background-color: #F5F5F5 !important;
+  color: #03A9F4; }

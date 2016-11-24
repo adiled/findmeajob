@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers;
+use App\Models\Listing as Listing;
 
 class ListingController extends Controller {
 
@@ -42,7 +43,9 @@ class ListingController extends Controller {
    */
   public function show($id)
   {
-    
+    return view('listing', [
+        'data' => Listing::findOrFail($id)
+      ]);
   }
 
   /**

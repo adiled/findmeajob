@@ -11,7 +11,7 @@ $brand-gray: #F5F5F5;
 // Bootstrap
 // @import "semantic-ui/bootstrap-sass/assets/stylesheets/bootstrap";
 
-body {background-color: #fff; font-family: 'Montserrat'!important; font-size: 16px}
+body {background-color: #fff; color: #555; font-family: 'Montserrat'!important; font-size: 16px}
 
 .clr {clear: both}
 
@@ -22,6 +22,8 @@ a:hover {cursor: pointer}
 .upper {text-transform: uppercase;
   &.heading {letter-spacing: 1px; font-family: 'Montserrat'}
 }
+
+.title {font-weight: bold}
 
 header {height: 60px; background-color: #fafafa;
   
@@ -43,7 +45,7 @@ header {height: 60px; background-color: #fafafa;
 section {padding: 50px 5%;}
 
 #app .listing { margin: 50px 0;
-  .item {position: relative; padding: 10px 20px!important; text-align: center; background-color: darken($brand-gray, 40%); color: #fff; transition: all 0.3s ease-in-out;
+  .item {display: block; position: relative; padding: 10px 20px!important; text-align: center; background-color: darken($brand-gray, 40%); color: #fff; transition: all 0.3s ease-in-out;
     
     $toolbar-height: 35px; 
 
@@ -78,12 +80,38 @@ section.user-profile { max-width: 600px; margin: 0 auto;
   .details { padding: 0 10px;}
 }
 
+section.login {max-width: 600px; margin: 0 auto;
+
+}
+
+section.single-listing { max-width: 900px; margin: 0 auto; font-size: 14px;
+  .header {margin: 50px 0; padding-bottom: 20px; border-bottom: 1px solid darken($brand-gray,5%);
+    div.left {float: left}
+    div.right {float: right;
+      a.apply {display: block; margin: 0 0 10px 0; border-radius: 20px; box-shadow: -3px 0 4px rgba(0,0,0,0.2)}
+      p {text-align: right;}
+    }
+    .apply {float: right}
+  }
+
+}
+
 // UI Overrides
 
 #app {
+
+  .dimmer.blanket {position: fixed; overflow-y: scroll; text-align: left;
+    section {min-height: 100vh; background-color: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.05); transition: all 0.3s ease;
+      &:hover {box-shadow: 0 0 100px rgba(0,0,0,0.1)}
+      &:before {font-family: 'Icons'; content: '\f00d'; float: right; color: rgba(0,0,0,0.2) }
+    }
+  }
   
+
   .heading {margin: 0 0 50px 0}
-  .ui.button.primary {background-color: $brand-primary}
+  .ui.button.primary {font-family: 'Montserrat'; background-color: $brand-primary; transition: all 0.3s ease!important;
+    &:hover {box-shadow: 0 3px 4px rgba(0,0,0,0.2);transition: all 1s ease;}
+  }
 
   .ui.message {border: 0; box-shadow: none; padding: 7px 20px; margin: 50px 0;
     &.positive {background-color: #00BFA5; color: #fff}
@@ -92,10 +120,10 @@ section.user-profile { max-width: 600px; margin: 0 auto;
   form.ui.form {
     label {color: #666;}
     input:not([type="submit"]), textarea { margin: 20px 0 40px 0; border-radius: 0; border: 0; border-bottom: 2px solid #aaa; color: #aaa;
-
       &:focus {color: $brand-primary; border-color: $brand-primary; }
     }
-  }
 
+    input:-webkit-autofill {background-color: $brand-gray!important; color: $brand-primary;}
+  }
 
 }

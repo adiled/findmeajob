@@ -6,7 +6,7 @@
   @endif
 
 <div class="column">
-  <div class="item {{$employer ? 'has-toolbar':''}}">
+  <div class="item {{$employer ? 'has-toolbar':''}}" data-id="{{$listing->id}}">
 
     @if($employer)
       <div class="toolbar">
