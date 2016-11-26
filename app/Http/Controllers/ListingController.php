@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\Listing as Listing;
 
 class ListingController extends Controller {
@@ -22,7 +23,7 @@ class ListingController extends Controller {
    */
   public function create()
   {
-    
+    return view('listing.createupdate');
   }
 
   /**
@@ -43,7 +44,7 @@ class ListingController extends Controller {
    */
   public function show($id)
   {
-    return view('listing', [
+    return view('listing.show', [
         'data' => Listing::findOrFail($id)
       ]);
   }
@@ -56,7 +57,10 @@ class ListingController extends Controller {
    */
   public function edit($id)
   {
-    
+    $listing = Listing::findOrFail($id);
+    return view('listing.createupdate', [
+        'listing' => $listing
+      ]);
   }
 
   /**
@@ -65,9 +69,19 @@ class ListingController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update($id, Request $request)
   {
-    
+
+    $this->validate($request, [
+      'job_title' => 'required',
+      'description' => 'required',
+    ]);
+
+    $listing = Listing::findOrFail($id);
+    $listing->update($request->all());
+
+    return redirect()->back()->with('success', 'Listing Updated');
+
   }
 
   /**

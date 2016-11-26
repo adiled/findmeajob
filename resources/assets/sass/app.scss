@@ -88,12 +88,19 @@ section.single-listing { max-width: 900px; margin: 0 auto; font-size: 14px;
   .header {margin: 50px 0; padding-bottom: 20px; border-bottom: 1px solid darken($brand-gray,5%);
     div.left {float: left}
     div.right {float: right;
-      a.apply {display: block; margin: 0 0 10px 0; border-radius: 20px; box-shadow: -3px 0 4px rgba(0,0,0,0.2)}
+      .button {display: block; margin: 0 0 10px 0; border-radius: 20px; box-shadow: -3px 0 4px rgba(0,0,0,0.2)}
       p {text-align: right;}
     }
     .apply {float: right}
   }
 
+  form {
+    input {display: inline-block;}
+  }
+}
+
+body.employer section.single-listing {
+  .employer {display: none}
 }
 
 // UI Overrides

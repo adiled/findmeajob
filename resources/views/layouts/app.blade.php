@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +26,26 @@
   </script>
 
   </head>
-  <body>
+
+  <?php 
+
+    $user_role = '';
+    $body_class = '';
+
+    if(Auth::check()) {
+      $user_role = Auth::user()->userRole->name;
+      $body_class = 'logged-in '.$user_role;
+    }
+
+    // if($user_role) {
+    //   $body_class = 'logged-in '.$user_role;
+    // }
+
+    // View::share('user_role', $user_role);
+
+  ?>
+
+  <body class="{{$body_class}}">
     <div id="app">
 
       <header>
@@ -52,7 +73,7 @@
 
       {{-- <p style="color: #ddd" class="center small"><b>Note: </b> UI is not final. Will be iterated </p> --}}
 
-      @yield('content')
+      @yield('content', ['user_role' => $user_role])
 
       <div class="blanket ui inverted scrolling dimmer">
         

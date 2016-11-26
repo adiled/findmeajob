@@ -12,7 +12,7 @@
       <div class="toolbar">
         <span class="date-activated"><i class="checked calendar icon"></i>{{date('M d', strtotime($listing->last_activated_at))}}</span>
         <a href="" class="delete"><i class="delete icon"></i></a>
-        <a href="" class="edit"><i class="pencil icon"></i></a>
+        <a href="{{route('listing.edit', $listing->id)}}" class="edit"><i class="pencil icon"></i></a>
         <div class="clr"></div>
       </div>
     @endif

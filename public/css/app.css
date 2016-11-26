@@ -138,7 +138,7 @@ section.single-listing {
       float: left; }
     section.single-listing .header div.right {
       float: right; }
-      section.single-listing .header div.right a.apply {
+      section.single-listing .header div.right .button {
         display: block;
         margin: 0 0 10px 0;
         border-radius: 20px;
@@ -147,6 +147,11 @@ section.single-listing {
         text-align: right; }
     section.single-listing .header .apply {
       float: right; }
+  section.single-listing form input {
+    display: inline-block; }
+
+body.employer section.single-listing .employer {
+  display: none; }
 
 #app .dimmer.blanket {
   position: fixed;
