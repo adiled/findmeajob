@@ -8,7 +8,7 @@
 
     <h5 class="heading center upper">Edit Profile</h5>
 
-    {{ Form::model(Auth::user(), ['class' => 'ui form', 'route' => ['user.update', Auth::user()->id], 'method' => 'put']) }}    
+    {{ Form::model($user, ['class' => 'ui form', 'route' => ['user.update', $user->id], 'method' => 'put']) }}    
 
     @include('errors.form')
     
@@ -26,17 +26,16 @@
     {{ Form::label('email', 'Email') }}
     {{ Form::email('email') }}      
 
+
+    <!-- phone -->
+    {{ Form::label('phone', 'Phone') }}
+    {{ Form::text('phone') }}
+
     <div class="center">
         {{ Form::submit('Update Profile', ['class' => 'ui button primary']) }}
     </div>
 
     {{ Form::close() }}
-
-{{--     <form class="ui form" method="PUT" action="/user">
-        
-        <input type="submit" value="Edit Profile">
-
-    </form> --}}
 
 </section>
 

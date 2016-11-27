@@ -15,7 +15,10 @@
   <!-- Styles -->
   <link href="/css/vendor.css" rel="stylesheet">
   <link href="/css/app.css" rel="stylesheet">
+  <link href="/css/dropzone.css" rel="stylesheet">
+
   <script type="text/javascript" src="/js/app.js"></script>
+  <script type="text/javascript" src="/js/dropzone.js"></script>
   <script type="text/javascript" src="/js/custom.js"></script>
 
   <!-- Scripts -->
@@ -29,19 +32,11 @@
 
   <?php 
 
-    $user_role = '';
     $body_class = '';
 
     if(Auth::check()) {
-      $user_role = Auth::user()->userRole->name;
       $body_class = 'logged-in '.$user_role;
     }
-
-    // if($user_role) {
-    //   $body_class = 'logged-in '.$user_role;
-    // }
-
-    // View::share('user_role', $user_role);
 
   ?>
 
@@ -49,11 +44,11 @@
     <div id="app">
 
       <header>
-        <a class="logo" href="{{ url('/') }}"><img src="/img/logo.png" /></a>
+        <a class="logo" href="{{ url('/') }}"><img src={{asset('images/logo.png')}} /></a>
         <nav>
           <ul>
             @if (Auth::guest())
-            <li class="login"><a>Login</a></li>
+            <li class="login"><a href="{{ url('/login') }}">Login</a></li>
             <li class="register"><a href="{{ url('/register') }}">Register</a></li>
             @else
             <li class="dashboard">
@@ -69,11 +64,12 @@
             @endif
           </ul>
         </nav>
+        <div class="clr"></div>
       </header>
 
       {{-- <p style="color: #ddd" class="center small"><b>Note: </b> UI is not final. Will be iterated </p> --}}
 
-      @yield('content', ['user_role' => $user_role])
+      @yield('content')
 
       <div class="blanket ui inverted scrolling dimmer">
         

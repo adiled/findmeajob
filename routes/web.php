@@ -46,14 +46,17 @@ Route::get('/dashboard/profile/edit', 'DashboardController@showProfileEdit');
 
 // Listing
 
-Route::get('/listing/{id}', 'ListingController@show');
+Route::get('/listing/{id}', 'ListingController@show')->where('id', '[0-9]+');
 
-Route::get('/listing/new', 'ListingController@create');
+Route::get('/listing/new', [
+    'as' => 'listing.create',
+    'uses' => 'ListingController@create'
+  ]);
 
 Route::get('/listing/{id}/edit', [
   'as' => 'listing.edit',
   'uses' => 'ListingController@edit'
-  ]);
+  ])->middleware('auth');
 
 
 Route::post('/listing', [
@@ -72,14 +75,14 @@ Route::patch('/listing/{id}', [
 Route::get('/job-application/{id}', [
   'as' => 'application.show',
   'uses' => 'JobApplicationController@show'
-  ]);
+  ])->middleware('auth')->where('id', '[0-9]+');;
 
-Route::get('/job-application/new', [
+Route::get('/job-application/new/{listing_id}', [
   'as' => 'application.create',
   'uses' => 'JobApplicationController@create'
-  ]);
+  ])->middleware('auth');
 
 Route::post('/job-application', [
-  'as' => 'application.update',
-  'uses' => 'JobApplicationController@update'
-  ]);
+  'as' => 'application.store',
+  'uses' => 'JobApplicationController@store'
+  ])->middleware('auth');

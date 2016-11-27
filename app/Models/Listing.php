@@ -10,7 +10,7 @@ class Listing extends Model {
 	public $timestamps = true;
 
   protected $fillable = [
-    'job_title', 'description'
+    'user_id', 'job_title', 'description', 'salary', 'work_hour_start', 'work_hour_end'
   ];
 
   public function user() {

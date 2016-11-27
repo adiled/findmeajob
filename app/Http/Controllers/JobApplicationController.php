@@ -1,6 +1,9 @@
 <?php 
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Models\JobApplication as Application;
+use App\Models\Listing as Listing;
 
 class JobApplicationController extends Controller {
 
@@ -9,6 +12,7 @@ class JobApplicationController extends Controller {
    *
    * @return Response
    */
+
   public function index()
   {
     
@@ -19,9 +23,14 @@ class JobApplicationController extends Controller {
    *
    * @return Response
    */
-  public function create()
+  public function create($listing_id)
   {
-    
+
+    $listing = Listing::findOrFail($listing_id);
+
+    return view('application.createupdate', [
+        'listing' => $listing
+      ]);
   }
 
   /**
@@ -29,9 +38,19 @@ class JobApplicationController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+
+    $this->validate($request, [
+      'listing_id' => 'required|exists:listings,id|unique:job_applications,listing_id,NULL,id,user_id,'.$request->input('user_id'),
+      'user_id' => 'required',
+      'cover_letter' => 'required'
+    ]);
+
+    $application = new Application($request->all());
+    $application->save();
+
+    return redirect()->back()->with('success', 'Application Created');
   }
 
   /**
@@ -42,7 +61,9 @@ class JobApplicationController extends Controller {
    */
   public function show($id)
   {
-    
+    return view('application.show', [
+        'application' => Application::findOrFail($id)
+      ]);
   }
 
   /**

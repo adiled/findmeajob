@@ -1,22 +1,32 @@
+@extends('layouts.app')
 
+@section('content')
 
-  <form class="ui form" role="form" method="POST" action="{{ url('/login') }}">
-    {{ csrf_field() }}
+<section class="login">
+ <form class="ui form" role="form" method="POST" action="{{ url('/login') }}">
+  
+  <p class="ui message"></p>
 
-    <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-    
-    <label for="password" class="col-md-4 control-label">Password</label>
-    <input id="password" type="password" class="form-control" name="password" required>
+  {{ csrf_field() }}
 
-    <div class="ui checkbox">
-      <input type="checkbox" name="remember">
-      <label> Remember Me</label>
-    </div>
+  <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
-    <button type="submit" class="ui button primary">Login</button>
+  <label for="password" class="col-md-4 control-label">Password</label>
+  <input id="password" type="password" class="form-control" name="password" required>
 
-    <a class="btn btn-link" href="{{ url('/password/reset') }}">
-      Forgot Your Password?
-    </a>
-  </form>
+  <div class="ui checkbox">
+    <input type="checkbox" name="remember">
+    <label> Remember Me</label>
+  </div>
+
+  <button type="submit" class="ui button primary">Login</button>
+
+  <a class="btn btn-link" href="{{ url('/password/reset') }}">
+    Forgot Your Password?
+  </a>
+</form>   
+
+</section>
+
+@endsection

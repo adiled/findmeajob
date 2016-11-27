@@ -34,6 +34,10 @@ header {
   background-color: #fafafa; }
   header .logo {
     float: left; }
+    header .logo img {
+      height: 30px;
+      margin-top: 15px;
+      margin-left: 20px; }
   header nav {
     float: right;
     line-height: 60px;
@@ -94,6 +98,9 @@ section {
     #app .listing .item .employer {
       font-size: 14px; }
 
+section.dashboard .post-ad {
+  margin: 50px 0; }
+
 section.edit-profile {
   max-width: 600px;
   margin: 0 auto; }
@@ -122,33 +129,37 @@ section.user-profile {
   section.user-profile .details {
     padding: 0 10px; }
 
-section.login {
+section.login, section.register {
   max-width: 600px;
   margin: 0 auto; }
 
-section.single-listing {
+section.single-listing, section.single-application {
   max-width: 900px;
   margin: 0 auto;
   font-size: 14px; }
-  section.single-listing .header {
+  section.single-listing .header, section.single-application .header {
     margin: 50px 0;
     padding-bottom: 20px;
     border-bottom: 1px solid #e8e8e8; }
-    section.single-listing .header div.left {
+    section.single-listing .header div.left, section.single-application .header div.left {
       float: left; }
-    section.single-listing .header div.right {
+    section.single-listing .header div.right, section.single-application .header div.right {
       float: right; }
-      section.single-listing .header div.right .button {
+      section.single-listing .header div.right .button, section.single-application .header div.right .button {
         display: block;
         margin: 0 0 10px 0;
         border-radius: 20px;
         box-shadow: -3px 0 4px rgba(0, 0, 0, 0.2); }
-      section.single-listing .header div.right p {
+      section.single-listing .header div.right p, section.single-application .header div.right p {
         text-align: right; }
-    section.single-listing .header .apply {
+    section.single-listing .header .apply, section.single-application .header .apply {
       float: right; }
-  section.single-listing form input {
+  section.single-listing form input, section.single-application form input {
     display: inline-block; }
+  section.single-listing form .message, section.single-application form .message {
+    display: none; }
+  section.single-listing form .message.visible, section.single-application form .message.visible {
+    display: block; }
 
 body.employer section.single-listing .employer {
   display: none; }
@@ -197,11 +208,14 @@ body.employer section.single-listing .employer {
   margin: 20px 0 40px 0;
   border-radius: 0;
   border: 0;
-  border-bottom: 2px solid #aaa;
+  border-bottom: 2px solid #ddd;
   color: #aaa; }
   #app form.ui.form input:not([type="submit"]):focus, #app form.ui.form textarea:focus {
     color: #03A9F4;
     border-color: #03A9F4; }
+
+#app form.ui.form textarea {
+  border: 2px solid #ddd; }
 
 #app form.ui.form input:-webkit-autofill {
   background-color: #F5F5F5 !important;

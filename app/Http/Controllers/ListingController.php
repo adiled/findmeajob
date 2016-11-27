@@ -31,9 +31,20 @@ class ListingController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+    $this->validate($request, [
+      'job_title' => 'required',
+      'description' => 'required',
+      'salary' => 'required|integer',
+      'work_hour_start' => 'required',
+      'work_hour_end' => 'required'
+    ]);
+
+    $listing = new Listing($request->all());
+    $listing->save();
+
+    return redirect()->back()->with('success', 'Listing Created!');
   }
 
   /**
@@ -75,6 +86,9 @@ class ListingController extends Controller {
     $this->validate($request, [
       'job_title' => 'required',
       'description' => 'required',
+      'salary' => 'required|integer',
+      'work_hour_start' => 'required',
+      'work_hour_end' => 'required'
     ]);
 
     $listing = Listing::findOrFail($id);

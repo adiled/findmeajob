@@ -1,5 +1,8 @@
+@extends('layouts.app')
 
-<section>
+@section('content')
+
+<section class="register">
 
   <form class="ui form" role="form" method="POST" action="{{ url('/register') }}">
     {{ csrf_field() }}
@@ -30,3 +33,8 @@
   </form>
 
 </section>
+
+
+</section>
+
+@endsection
