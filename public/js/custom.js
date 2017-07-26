@@ -23,16 +23,17 @@ function ajaxFormSubmit($container, successMsg, errMsg) {
     var method = $(this).attr('method')
     var data = $(this).serialize()
 
-    console.log($.ajax({
+    $.ajax({
       url: url,
       type: method,
+      dataType: "json",
       data: data,
       statusCode: {
         422: function(res){
-          console.log(res.responseJSON)
+          //console.log(res.responseJSON)
 
           // for (var key in res.responseJSON) {
-            
+
           // }
 
           $container.find('.message').html(errMsg).addClass('visible negative')
@@ -41,10 +42,11 @@ function ajaxFormSubmit($container, successMsg, errMsg) {
       success: function(res, req){
         $container.find('.message').html(successMsg).addClass('visible positive')
       },
-      error: function(){
+      error: function(req,res,err){
+        console.log(err)
         $container.find('.message').html(errMsg).addClass('visible negative')
       }
-    }))
+    })
   })
 
 }
